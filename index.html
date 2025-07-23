@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini Hippo | Bộ đôi Học 1 Được 2</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #e1eefa;
+    }
+    /* Header */
+    header {
+      background: #fff; padding: 8px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .main-nav {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap;
+    }
+    .main-nav .logo { height: 90px; }
+    .main-nav nav {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .main-nav nav a {
+      color: #002244; text-decoration: none;
+      font-weight: 500;
+    }
+    .main-nav nav .btn-primary {
+      background: #004aad; color: #fff;
+      border: none; padding: 6px 12px;
+      border-radius: 20px; cursor: pointer;
+    }
+
+    /* Khóa học Section */
+    .toeic-section {
+      max-width: 1100px; margin: 40px auto;
+      padding: 20px; background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .section-title {
+      font-size: 26px; color: #004aad;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 14px; color: #333;
+      line-height: 1.6; margin-bottom: 24px;
+      text-align: left;
+    }
+    .courses-grid {
+      display: grid; gap: 16px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 700px) {
+      .courses-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .course-card {
+      background: #f0f2f2; border-radius: 8px;
+      display: flex; flex-direction: column;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 12px;
+    }
+    .course-title {
+      margin: 12px 0; font-size: 18px;
+      color: #e60073; text-align: center;
+    }
+    .course-info {
+      list-style: none; padding: 0;
+      margin: 0 0 12px; flex-grow: 1;
+      color: #333; font-size: 13px; line-height: 1.4;
+    }
+    .course-info li { margin-bottom: 6px; }
+    .course-buttons {
+      display: flex; gap: 8px;
+      justify-content: center; padding-top: 8px;
+    }
+    .btn-primary, .btn-secondary {
+      border: none; padding: 8px 12px;
+      border-radius: 20px; font-weight: bold;
+      font-size: 14px; cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary {
+      background-color: #004aad; color: #fff;
+    }
+    .btn-secondary {
+      background-color: #e60073; color: #fff;
+    }
+
+    /* Giáo viên Section */
+    .teacher-section {
+      max-width: 1100px; margin: 60px auto 40px;
+      padding: 20px; background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .teacher-section h2 {
+      font-size: 26px; color: #004aad;
+      margin-bottom: 16px;
+    }
+    .teacher-section p {
+      font-size: 14px; color: #333;
+      line-height: 1.6; margin-bottom: 24px;
+      text-align: justify;  /* căn đều hai bên */
+    }
+
+    /* Avatar row */
+    .avatar-row {
+      display: flex; justify-content: center;
+      gap: 32px; margin-bottom: 24px;
+    }
+    .avatar {
+      width: 130px; height: 130px;
+      border-radius: 50%; overflow: hidden;
+      background: #004aad; cursor: pointer;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    /* Profile container */
+    .profile-container {
+      max-width: 1100px; margin: 0 auto 60px;
+      display: grid; grid-template-columns: 1fr 4fr;
+      gap: 32px; align-items: center;
+      background: #cce7ff;      /* xanh nhạt */
+      border-radius: 12px; padding: 24px;
+      color: #333;
+    }
+    .profile-photo {
+      overflow: hidden; border-radius: 12px;
+    }
+    .profile-photo img {
+      width: 100%; display: block;
+    }
+    .info-name {
+      display: none;  /* ẩn tên “Chị Thúy Vy” */
+    }
+    .info-quote {
+      font-style: italic; margin: 8px 0 16px;
+    }
+    .info-blocks {
+      display: grid; gap: 16px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .info-section h4 {
+  margin: 0 0 4px;
+  font-size: 18x;
+  color: #004aad;
+  text-align: left;  /* thêm dòng này */
+}
+    .profile-info {
+  text-align: left;
+}
+
+/* 2) Khối .info-section ul */
+.info-section ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style: none;
+  font-size: 14px;
+}
+    .info-section ul li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="main-nav">
+    <img src="logo hippo (5).png" alt="Mini Hippo Logo" class="logo">
+    <nav>
+      <a href="#">Về Mini Hippo</a>
+      <a href="#courses">Khóa học</a>
+      <a href="#">Bảng điểm & Feedback</a>
+      <a href="#">Tuyển dụng</a>
+      <a href="#">Liên hệ</a>
+      <a href="https://m.me/425649883967445" class="btn-primary" target="_blank">
+        Inbox Mini Hippo
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section class="toeic-section" id="courses">
+  <h2 class="section-title">CÁC KHÓA HỌC TOEIC MINI HIPPO</h2>
+  <p class="section-desc">
+    Các khóa học <strong>TOEIC MINI HIPPO</strong> được thiết kế phù hợp với từng trình độ
+    của học viên với lộ trình học từ cơ bản đến nâng cao. Tất cả khóa học đều được cam kết
+    đầu ra bằng văn bản và duy trì sĩ số từ 15 – 25 học viên để đảm bảo chất lượng lớp học
+    và sự tương tác giữa học viên và giáo viên.
+  </p>
+  <div class="courses-grid">
+    <div class="course-card">
+      <h3 class="course-title">PRE TOEIC – MẤT GỐC</h3>
+      <ul class="course-info">
+        <li><strong>Lộ trình</strong>: 24 buổi</li>
+        <li><strong>Dành cho</strong>: mất gốc TOEIC, không yêu cầu đầu vào</li>
+      </ul>
+      <div class="course-buttons">
+        <a href="https://m.me/425649883967445" class="btn-primary" target="_blank">ĐĂNG KÝ NGAY</a>
+        <button class="btn-secondary">XEM THÊM</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <h3 class="course-title">TOEIC CƠ BẢN 350+</h3>
+      <ul class="course-info">
+        <li><strong>Lộ trình</strong>: 30 buổi</li>
+        <li><strong>Yêu cầu đầu vào</strong>: Test miễn phí đạt bậc 2</li>
+        <li><strong>Cam kết đầu ra</strong>: TOEIC ≥350+</li>
+      </ul>
+      <div class="course-buttons">
+        <a href="https://m.me/425649883967445" class="btn-primary" target="_blank">ĐĂNG KÝ NGAY</a>
+        <button class="btn-secondary">XEM THÊM</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <h3 class="course-title">TOEIC TRUNG CẤP 500+</h3>
+      <ul class="course-info">
+        <li><strong>Lộ trình</strong>: 30 buổi</li>
+        <li><strong>Yêu cầu đầu vào</strong>: Test miễn phí đạt bậc 3</li>
+        <li><strong>Cam kết đầu ra</strong>: TOEIC ≥500+</li>
+      </ul>
+      <div class="course-buttons">
+        <a href="https://m.me/425649883967445" class="btn-primary" target="_blank">ĐĂNG KÝ NGAY</a>
+        <button class="btn-secondary">XEM THÊM</button>
+      </div>
+    </div>
+    <div class="course-card">
+      <h3 class="course-title">LUYỆN ĐỀ TOEIC</h3>
+      <ul class="course-info">
+        <li><strong>Level 1 (450–600)</strong>: Lộ trình 18 buổi; Yêu cầu đầu vào bậc 4</li>
+        <li><strong>Level 2 (600–700+)</strong>: Lộ trình 24 buổi; Yêu cầu đầu vào bậc 5</li>
+      </ul>
+      <div class="course-buttons">
+        <a href="https://m.me/425649883967445" class="btn-primary" target="_blank">ĐĂNG KÝ NGAY</a>
+        <button class="btn-secondary">XEM THÊM</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="teacher-section">
+  <h2>ĐỘI NGŨ GIÁO VIÊN TOEIC MINI HIPPO</h2>
+  <p>
+    <strong>TOEIC MINI HIPPO</strong> tự hào đồng hành cùng đội ngũ giáo viên chuyên môn vững vàng,
+    kỹ năng sư phạm tốt. Sở hữu nhiều năm kinh nghiệm trong giảng dạy và am hiểu
+    chuyên sâu về kỳ thi TOEIC và Tiếng Anh học thuật, với sứ mệnh mang đến
+    chất lượng học tập và giảng dạy tốt nhất cho Học viên.
+  </p>
+
+  <div class="avatar-row">
+    <div class="avatar" data-teacher="vy">
+      <img src="CÔ THÚY VY.png" alt="Chị Thúy Vy">
+    </div>
+    <div class="avatar" data-teacher="my">
+      <img src="CÔ HOÀNG MỸ.png" alt="Cô Hoàng Mỹ">
+    </div>
+  </div>
+
+  <div class="profile-container">
+    <div class="profile-photo">
+      <img src="" alt="">
+    </div>
+    <div class="profile-info">
+      <h3 class="info-name"></h3>
+      <p class="info-quote"></p>
+      <div class="info-blocks"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const TEACHERS = {
+    vy: {
+      photo: 'CÔ THÚY VY.png',
+      name: 'Vy', quote: '',
+      blocks: [
+        { title:'Chứng chỉ', items:['TOEIC 970/990; LC: 495 & RC: 455','HEW London – Teacher Training Hub'] },
+        { title:'Kinh nghiệm', items:['Giảng THCS & THPT','Dạy giao tiếp trẻ em & người lớn'] },
+        { title:'Học vấn', items:['Cử nhân Ngôn ngữ Anh (USSH)'] },
+        { title:'Giải thưởng', items:['Top SV giỏi & xuất sắc nhất Khoa NNA (USSH)'] }
+      ]
+    },
+    my: {
+      photo: 'CÔ HOÀNG MỸ.png',
+      name: 'Mỹ', quote: '',
+      blocks: [
+        { title:'Chứng chỉ', items:['IELTS 6.5/9.0; Listening 7.0','TOEIC 915; LC 450+ & RC 450+','TESOL 100h Certificate Program'] },
+        { title:'Kinh nghiệm', items:['Giảng demo intensive TESOL course'] },
+        { title:'Học vấn', items:['Cử nhân Ngoại ngữ – Tin học (HUFLIT)'] },
+        { title:'Giải thưởng', items:['Top 100 SV giỏi & xuất sắc nhất HUFLIT'] }
+      ]
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const avatars = document.querySelectorAll('.avatar'),
+          photo   = document.querySelector('.profile-photo img'),
+          nameEl  = document.querySelector('.info-name'),
+          quoteEl = document.querySelector('.info-quote'),
+          blocks  = document.querySelector('.info-blocks');
+
+    function showProfile(key){
+      const t = TEACHERS[key];
+      photo.src = t.photo; photo.alt = t.name;
+      nameEl.textContent  = t.name; 
+      quoteEl.textContent = t.quote;
+      blocks.innerHTML    = '';
+      t.blocks.forEach(b => {
+        const sec = document.createElement('div');
+        sec.className = 'info-section';
+        sec.innerHTML = `<h4>${b.title}:</h4>
+                         <ul>${b.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+        blocks.appendChild(sec);
+      });
+    }
+
+    avatars.forEach(av => {
+      av.addEventListener('mouseenter', () => showProfile(av.dataset.teacher));
+    });
+    showProfile('vy');
+  });
+</script>
+
+</body>
+</html>
